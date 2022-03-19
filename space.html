@@ -8,13 +8,13 @@
 	<style>
 		@font-face {
 			font-family : 'myFont'; /* Ваше название шрифта */
-			src : url(font.ttf);    /* Путь к файлу со шрифтом TTF */
+			src : url(fonts/space/font.ttf);    /* Путь к файлу со шрифтом TTF */
 		}
 	</style>
 
 </head>
 <body>
-<script type="text/javascript" src="point.js"></script>
+<script type="text/javascript" src="js/point.js"></script>
 <script type="text/javascript">
 
 var width = window.innerWidth, 
@@ -40,7 +40,7 @@ var score = 0;
 var bg = [], oldB;
 OOP.forInt(3, function (i) {
 	oldB = game.newImageObject({
-		file : 'bg.png',
+		file : 'images/bg.png',
 		h : height,
 		onload : function () {
 			this.x = i * this.w;
@@ -94,7 +94,7 @@ var bird = game.newAnimationObject({
 	w : 34, h : 24,
 	positionC : p(width / 2, height / 2),
 	scale : 3.5,
-	animation : pjs.tiles.newAnimation('34_24_4.png', 34, 24, 4),
+	animation : pjs.tiles.newAnimation('images/34_24_4.png', 34, 24, 4),
 	delay : 2,
 	userData : {
 		dy : 0
@@ -140,21 +140,25 @@ var Game = function () {
 		var dX = oldBlock ? oldBlock.top.x + pjs.math.random(200, 900) : width;
 
 		var o = game.newImageObject({
-			file : 'block.png',
+			file : 'images/block.png',
 			x : dX, y : 0,
 			w : width / 10,
 			angle : 180,
 			onload : function () {
-				this.y = -this.h + y - space;
+                                this.y=pjs.math.random(0, 900);
+				//this.y = -this.h + y - space;
 			}
 		});
 
 		var o2 = game.newImageObject({
-			file : 'block.png',
+			file : 'images/block1.png',
 			x : dX, y : 0,
 			w : width / 10,
 			onload : function () {
-				this.y = y + space;
+                                this.y=y + pjs.math.random(0, 900);
+				//this.y = y + space;
+
+
 			}
 		});
 
